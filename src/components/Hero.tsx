@@ -93,7 +93,7 @@ const Hero = () => {
             <div className="relative animate-fade-in">
               <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-8 border-white dark:border-gray-700 bg-gradient-to-br from-blue-400 to-purple-600">
                 <img
-                  src="/public/foto.jpg"
+                  src="/foto.jpg"
                   alt="Sua foto"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                 />
