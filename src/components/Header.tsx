@@ -1,7 +1,6 @@
-
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun, Download } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import React, { useState, useEffect } from "react";
+import { Menu, X, Moon, Sun, Download } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,48 +11,48 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navigationItems = [
-    { name: 'Início', href: '#home' },
-    { name: 'Sobre', href: '#about' },
-    { name: 'Projetos', href: '#projects' },
-    { name: 'Tecnologias', href: '#technologies' },
-    { name: 'Timeline', href: '#timeline' },
-    { name: 'Contato', href: '#contact' }
+    { name: "Início", href: "#home" },
+    { name: "Sobre", href: "#about" },
+    { name: "Projetos", href: "#projects" },
+    { name: "Tecnologias", href: "#technologies" },
+    { name: "Timeline", href: "#timeline" },
+    { name: "Contato", href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMenuOpen(false);
   };
 
   const downloadCV = () => {
     // Simula o download do CV
-    const link = document.createElement('a');
-    link.href = '#';
-    link.download = 'curriculo.pdf';
+    const link = document.createElement("a");
+    link.href = "/curriculo.pdf"; // Substitua pelo caminho real do seu currículo
+    link.download = "curriculo.pdf";
     link.click();
-    console.log('Download do currículo iniciado');
+    console.log("Download do currículo iniciado");
   };
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
+        isScrolled
+          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
       }`}
     >
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Portfolio
+            Leonardo Franca
           </div>
 
           {/* Desktop Navigation */}

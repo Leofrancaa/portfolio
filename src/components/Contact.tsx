@@ -1,66 +1,93 @@
+import React, { useState } from "react";
+import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simula envio do formulário
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    console.log('Formulário enviado:', formData);
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 3000);
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      console.log("Email enviado com sucesso!");
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      }, 3000);
+    } catch (error) {
+      console.error("Erro ao enviar email:", error);
+      setIsSubmitting(false);
+      alert(
+        "Ocorreu um erro ao enviar sua mensagem. Tente novamente mais tarde."
+      );
+    }
   };
 
   const contactInfo = [
     {
       icon: Mail,
       title: "Email",
-      info: "seu.email@exemplo.com",
-      color: "from-red-500 to-pink-500"
+      info: "leofrancal17@gmail.com",
+      color: "from-red-500 to-pink-500",
     },
     {
       icon: Phone,
       title: "Telefone",
-      info: "+55 (11) 99999-9999",
-      color: "from-green-500 to-emerald-500"
+      info: "+55 (71) 99660-1709",
+      color: "from-green-500 to-emerald-500",
     },
     {
       icon: MapPin,
       title: "Localização",
-      info: "São Paulo, SP - Brasil",
-      color: "from-blue-500 to-cyan-500"
-    }
+      info: "Salvador, BA - Brasil",
+      color: "from-blue-500 to-cyan-500",
+    },
   ];
 
   if (isSubmitted) {
     return (
-      <section id="contact" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <section
+        id="contact"
+        className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300"
+      >
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center">
             <div className="bg-green-50 dark:bg-green-900/20 rounded-2xl p-12">
@@ -79,23 +106,28 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section
+      id="contact"
+      className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300"
+    >
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Entre em <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Contato</span>
+              Entre em{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Contato
+              </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Tem um projeto em mente? Vamos conversar sobre como posso ajudar a torná-lo realidade
+              Tem um projeto em mente? Vamos conversar sobre como posso ajudar a
+              torná-lo realidade
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mt-6"></div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
@@ -103,9 +135,9 @@ const Contact = () => {
                   Vamos Conversar
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
-                  Estou sempre aberto a discutir novos projetos, oportunidades criativas 
-                  ou apenas para trocar ideias sobre tecnologia. Sinta-se à vontade para 
-                  entrar em contato!
+                  Estou sempre aberto a discutir novos projetos, oportunidades
+                  criativas ou apenas para trocar ideias sobre tecnologia.
+                  Sinta-se à vontade para entrar em contato!
                 </p>
               </div>
 
@@ -116,7 +148,9 @@ const Contact = () => {
                     key={index}
                     className="flex items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105"
                   >
-                    <div className={`w-12 h-12 bg-gradient-to-r ${contact.color} rounded-lg flex items-center justify-center mr-4`}>
+                    <div
+                      className={`w-12 h-12 bg-gradient-to-r ${contact.color} rounded-lg flex items-center justify-center mr-4`}
+                    >
                       <contact.icon className="text-white" size={24} />
                     </div>
                     <div>
@@ -137,7 +171,7 @@ const Contact = () => {
                   Tempo de Resposta
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Normalmente respondo em até 24 horas. Para projetos urgentes, 
+                  Normalmente respondo em até 24 horas. Para projetos urgentes,
                   não hesite em me ligar diretamente.
                 </p>
               </div>
@@ -148,7 +182,10 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
                       Nome *
                     </label>
                     <input
@@ -163,7 +200,10 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
                       Email *
                     </label>
                     <input
@@ -180,7 +220,10 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
                     Assunto *
                   </label>
                   <input
@@ -196,7 +239,10 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
                     Mensagem *
                   </label>
                   <textarea
