@@ -100,12 +100,11 @@ const About = () => {
           </div>
 
           {/* Stats */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="mt-16 grid grid-cols-3 md:grid-cols-3 gap-8">
             {[
               { number: "10+", label: "Projetos Concluídos" },
               { number: "3+", label: "Anos de Experiência" },
-              { number: "20+", label: "Tecnologias" },
-              { number: "100%", label: "Satisfação do Cliente" },
+              { number: "10+", label: "Tecnologias" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">

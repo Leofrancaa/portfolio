@@ -1,4 +1,3 @@
-import React from "react";
 import { ExternalLink, Github, Play } from "lucide-react";
 
 const Projects = () => {
@@ -11,20 +10,20 @@ const Projects = () => {
       technologies: [
         "Node.js",
         "Express",
-        "MongoDB",
+        "PostgreSQL",
         "Tailwind CSS",
         "TypeScript",
         "Next.js",
       ],
-      liveUrl: "https://github.com/Leofrancaa/Website_about_COD",
-      githubUrl: "https://github.com/Leofrancaa/finance-frontend",
+      liveUrl: "https://nexus-frontend-liard-one.vercel.app",
+      githubUrl: "https://github.com/Leofrancaa/nexus-frontend",
       color: "from-red-500 to-pink-500",
       bgColor: "bg-red-50 dark:bg-red-900/20",
     },
     {
       title: "Omni News",
       description:
-        "Site de notícias com integração de API, sistema de comentários e autenticação de usuários.",
+        "Site de notícias com integração de API, sistema de comentários e autenticação de usuários. (incompleto por enquanto)",
       image: "/omni.png",
       technologies: [
         "Next.js",
@@ -68,19 +67,25 @@ const Projects = () => {
       color: "from-purple-500 to-indigo-500",
       bgColor: "bg-purple-50 dark:bg-purple-900/20",
     },
-    /*
     {
-      title: "Mobile Banking App",
+      title: "Alpha Clean",
       description:
-        "Aplicativo móvel para transações bancárias com autenticação biométrica e notificações push.",
-      image:
-        "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=500&h=300&fit=crop",
-      technologies: ["React Native", "Firebase", "TypeScript"],
+        "Sistema web para gerenciamento de limpeza e serviços automotivos. Dashboard para gerenciamento de reservas e informações sobre os serviços",
+      image: "/Alpha.png",
+      technologies: [
+        "Node.js",
+        "Express",
+        "PostegreSQL",
+        "Tailwind CSS",
+        "TypeScript",
+        "Next.js",
+      ],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/TTG-Alpha-Clean",
       color: "from-orange-500 to-yellow-500",
       bgColor: "bg-orange-50 dark:bg-orange-900/20",
     },
+    /*
     {
       title: "AI Content Generator",
       description:
