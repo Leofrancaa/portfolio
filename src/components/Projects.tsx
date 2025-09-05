@@ -21,24 +21,6 @@ const Projects = () => {
       bgColor: "bg-red-50 dark:bg-red-900/20",
     },
     {
-      title: "Omni News",
-      description:
-        "Site de notícias com integração de API, sistema de comentários e autenticação de usuários. (incompleto por enquanto)",
-      image: "/omni.png",
-      technologies: [
-        "Next.js",
-        "Express",
-        "Node.js",
-        "Tailwind CSS",
-        "MongoDB",
-        "Typescript",
-      ],
-      liveUrl: "https://omni-news-pi.vercel.app",
-      githubUrl: "#",
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-50 dark:bg-blue-900/20",
-    },
-    {
       title: "WarzoneXT",
       description:
         "O meu primeiro projeto. Um site informativo sobre o jogo Call of Duty, com informações sobre mapas, armas e modos de jogo.",
@@ -62,7 +44,7 @@ const Projects = () => {
         "MongoDB",
         "Typescript",
       ],
-      liveUrl: "#",
+      liveUrl: "https://icone-pos.vercel.app",
       githubUrl: "https://github.com/Leofrancaa/iconePos",
       color: "from-purple-500 to-indigo-500",
       bgColor: "bg-purple-50 dark:bg-purple-900/20",
@@ -85,20 +67,18 @@ const Projects = () => {
       color: "from-orange-500 to-yellow-500",
       bgColor: "bg-orange-50 dark:bg-orange-900/20",
     },
-    /*
+
     {
-      title: "AI Content Generator",
+      title: "Colaboraê",
       description:
-        "Ferramenta de geração de conteúdo usando IA com interface intuitiva e múltiplos formatos de saída.",
-      image:
-        "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=500&h=300&fit=crop",
-      technologies: ["Python", "TensorFlow", "Flask", "React"],
-      liveUrl: "#",
-      githubUrl: "#",
+        "Sistema web para casa de festas, em salvador-bahia, com informações sobre os serviços, galeria de fotos e área de contato.",
+      image: "/colaborae.png",
+      technologies: ["Typescript", "Next.js", "Tailwind CSS", "React"],
+      liveUrl: "https://colaborae-bahia.vercel.app",
+      githubUrl: "https://github.com/Leofrancaa/colaborae",
       color: "from-teal-500 to-cyan-500",
       bgColor: "bg-teal-50 dark:bg-teal-900/20",
     },
-    */
   ];
 
   return (
